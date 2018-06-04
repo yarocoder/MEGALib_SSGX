@@ -1,0 +1,18 @@
+// Space Instrumentation
+
+  PixelSizeX = 200.0*mm;
+  PixelSizeY = 200.0*mm;
+  PixelThickness = 10.0*mm;   
+ 
+  NbOfPixelsInX = 1;
+  NbOfPixelsInY = 1;
+
+  MatrixSizeX = PixelSizeX;
+  MatrixSizeY = PixelSizeY;
+  MatrixThickness = PixelThickness;
+
+  NbOfMatrix  = 1;
+  
+  WorldSizeX = 1.2*(2*MatrixSizeY);
+  WorldSizeY = 1.2*(2*MatrixSizeY);
+  WorldSizeZ = 1.2*MatrixThickness;

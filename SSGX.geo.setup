@@ -1,0 +1,196 @@
+//1st simulation setup GeoMega
+
+// To complete geometry:
+// (1) Add an additional CdTeDetector using the other CdTeStripVolume as a sensitive volume.
+// (2) Add another trigger condition to include this new detector.
+// (3) Add the thin lead shield.
+
+Name CdTe
+Version 1.0
+
+Surrounding Sphere 30.0 0.0 0.0 0.0 30.0
+
+Include $(MEGALIB)/resource/examples/geomega/materials/Materials.geo
+
+
+Volume WorldVolume
+WorldVolume.Material Vacuum
+WorldVolume.Visibility 0
+WorldVolume.Shape BRIK 100000.0 100000.0 100000.0
+WorldVolume.Position 0.0 0.0 0.0
+WorldVolume.Mother 0
+
+#Volume CdTeVolume1
+#CdTeVolume1.Material CdTe
+#CdTeVolume1.Shape BRIK 1.0 1.0 5.0
+#CdTeVolume1.Visibility 1
+#CdTeVolume1.Color 1
+#CdTeVolume1.Position 0.0 0.0 0.0
+#CdTeVolume1.Mother WorldVolume
+
+#Volume CdTeVolume2
+#CdTeVolume2.Material CdTe
+#CdTeVolume2.Shape BRIK 1.0 1.0 5.0
+#CdTeVolume2.Visibility 1
+#CdTeVolume2.Color 1
+#CdTeVolume2.Position 2.0 0.0 0.0
+#CdTeVolume2.Mother WorldVolume
+
+#Volume CdTeVolume3
+#CdTeVolume3.Material CdTe
+#CdTeVolume3.Shape BRIK 1.0 1.0 5.0
+#CdTeVolume3.Visibility 1
+#CdTeVolume3.Color 1
+#CdTeVolume3.Position 4.0 0.0 0.0
+#CdTeVolume3.Mother WorldVolume
+
+#Volume CdTeVolume4
+#CdTeVolume4.Material CdTe
+#CdTeVolume4.Shape BRIK 1.0 1.0 5.0
+#CdTeVolume4.Visibility 1
+#CdTeVolume4.Color 1
+#CdTeVolume4.Position 6.0 0.0 0.0
+#CdTeVolume4.Mother WorldVolume
+
+#Volume CdTeVolume5
+#CdTeVolume5.Material CdTe
+#CdTeVolume5.Shape BRIK 1.0 1.0 5.0
+#CdTeVolume5.Visibility 1
+#CdTeVolume5.Color 1
+#CdTeVolume5.Position 0.0 10.0 0.0
+#CdTeVolume5.Mother WorldVolume
+
+#Volume CdTeVolume6
+#CdTeVolume6.Material CdTe
+#CdTeVolume6.Shape BRIK 1.0 1.0 5.0
+#CdTeVolume6.Visibility 1
+#CdTeVolume6.Color 1
+#CdTeVolume6.Position 2.0 10.0 0.0
+#CdTeVolume6.Mother WorldVolume
+
+#Volume CdTeVolume7
+#CdTeVolume7.Material CdTe
+#CdTeVolume7.Shape BRIK 1.0 1.0 5.0
+#CdTeVolume7.Visibility 1
+#CdTeVolume7.Color 1
+#CdTeVolume7.Position 4.0 10.0 0.0
+#CdTeVolume7.Mother WorldVolume
+
+#Volume CdTeVolume8
+#CdTeVolume8.Material CdTe
+#CdTeVolume8.Shape BRIK 1.0 1.0 5.0
+#CdTeVolume8.Visibility 1
+#CdTeVolume8.Color 1
+#CdTeVolume8.Position 6.0 10.0 0.0
+#CdTeVolume8.Mother WorldVolume
+
+Volume CdTeStripVolume1
+CdTeStripVolume1.Material CdTe
+CdTeStripVolume1.Shape BRIK 4.0 1.0 5.0
+CdTeStripVolume1.Visibility 1
+CdTeStripVolume1.Color 2
+CdTeStripVolume1.Position 4.0 -5.0 0.0
+CdTeStripVolume1.Mother WorldVolume
+
+Volume CdTeStripVolume2
+CdTeStripVolume2.Material CdTe
+CdTeStripVolume2.Shape BRIK 4.0 1.0 5.0
+CdTeStripVolume2.Visibility 1
+CdTeStripVolume2.Color 4
+CdTeStripVolume2.Position 4.0 5.0 0.0
+CdTeStripVolume2.Mother WorldVolume
+
+//------------------------------------------------
+// Detector Information:
+
+// Detector 1
+
+Strip2D CdTeDetector1
+#Scintillator CdTeDetector1
+
+CdTeDetector1.DetectorVolume CdTeStripVolume1
+CdTeDetector1.SensitiveVolume CdTeStripVolume1
+
+#CdTeDetector1.DetectorVolume CdTeVolume1
+#CdTeDetector1.SensitiveVolume CdTeVolume1
+
+CdTeDetector1.NoiseThreshold 1
+CdTeDetector1.TriggerThreshold 20
+#CdTeDetector1.NoiseThresholdEqualsTriggerThreshold true
+
+# Assume CZT resolution: Taken from GRI_Flexible.Detectordescription.geo file
+#CdTeDetector1.EnergyResolution ideal
+CdTeDetector1.EnergyResolution Gauss      14     14     1.15
+CdTeDetector1.EnergyResolution Gauss      60     60     1.26
+CdTeDetector1.EnergyResolution Gauss     122    122     1.47
+CdTeDetector1.EnergyResolution Gauss     662    662     4.125
+CdTeDetector1.EnergyResolution Gauss   10000  10000    16.04
+
+# Assume no event detection losses occur.
+CdTeDetector1.FailureRate 0.0
+
+## Pitch between the SSGX detector strips
+CdTeDetector1.StructuralPitch 0.0 0.0 0.0
+
+## Offset between the strips and the edge of the detector
+CdTeDetector1.StructuralOffset 0.0 0.0 0.0
+
+## No offset between the edge of the sensitive volume and the beginning of the first strip
+CdTeDetector1.Offset 0.0 0.0
+
+## 4 strips in the x-direction
+CdTeDetector1.StripNumber 4 1
+
+// Detector 2
+
+Strip2D CdTeDetector2
+#Scintillator CdTeDetector2
+
+CdTeDetector2.DetectorVolume CdTeStripVolume2
+CdTeDetector2.SensitiveVolume CdTeStripVolume2
+
+#CdTeDetector2.DetectorVolume CdTeVolume2
+#CdTeDetector2.SensitiveVolume CdTeVolume2
+
+CdTeDetector2.NoiseThreshold 1
+CdTeDetector2.TriggerThreshold 20
+#CdTeDetector2.NoiseThresholdEqualsTriggerThreshold true
+
+# Assume CZT resolution: Taken from GRI_Flexible.Detectordescription.geo file
+#CdTeDetector1.EnergyResolution ideal
+CdTeDetector2.EnergyResolution Gauss      14     14     1.15
+CdTeDetector2.EnergyResolution Gauss      60     60     1.26
+CdTeDetector2.EnergyResolution Gauss     122    122     1.47
+CdTeDetector2.EnergyResolution Gauss     662    662     4.125
+CdTeDetector2.EnergyResolution Gauss   10000  10000    16.04
+
+# Assume no event detection losses occur.
+CdTeDetector2.FailureRate 0.0
+
+## Pitch between the SSGX detector strips
+CdTeDetector2.StructuralPitch 0.0 0.0 0.0
+
+## Offset between the strips and the edge of the detector
+CdTeDetector2.StructuralOffset 0.0 0.0 0.0
+
+## No offset between the edge of the sensitive volume and the beginning of the first strip
+CdTeDetector2.Offset 0.0 0.0
+
+## 4 strips in the x-direction
+CdTeDetector2.StripNumber 4 1
+
+
+//-------------------------------------------------
+//Trigger Information:
+
+Trigger TriggerBlock1
+TriggerBlock1.Veto false
+TriggerBlock1.TriggerByChannel true
+#TriggerBlock1.TriggerByDetector true
+TriggerBlock1.Detector CdTeDetector1 1
+
+Trigger TriggerBlock2
+TriggerBlock2.Veto false
+TriggerBlock2.TriggerByChannel true
+#TriggerBlock2.TriggerByDetector true
+TriggerBlock2.Detector CdTeDetector2 1
