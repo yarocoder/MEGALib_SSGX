@@ -1,0 +1,106 @@
+Name SSGXsimulation
+Version 1.1
+
+SurroundingSphere 80.0  0.0  0.0  -40.0  80.0
+
+Include $(MEGALIB)/resource/examples/geomega/materials/Materials.geo
+
+
+Volume WorldVolume
+WorldVolume.Material Vacuum
+WorldVolume.Visibility 0
+WorldVolume.Shape BRIK 1000.0 1000.0 1000.0
+WorldVolume.Position 0.0 0.0 0.0
+WorldVolume.Mother 0
+
+Volume CdTeStrip1Volume1
+CdTeStrip1Volume1.Material CdTe
+CdTeStrip1Volume1.Shape BRIK 1.0 1.0 5.0
+CdTeStrip1Volume1.Visibility 1
+CdTeStrip1Volume1.Color 1
+CdTeStrip1Volume1.Position -3.0 -5.0 0.0
+CdTeStrip1Volume1.Mother WorldVolume
+
+Volume CdTeStrip1Volume2
+CdTeStrip1Volume2.Material CdTe
+CdTeStrip1Volume2.Shape BRIK 1.0 1.0 5.0
+CdTeStrip1Volume2.Visibility 1
+CdTeStrip1Volume2.Color 1
+CdTeStrip1Volume2.Position -1.0 -5.0 0.0
+CdTeStrip1Volume2.Mother WorldVolume
+
+Volume CdTeStrip1Volume3
+CdTeStrip1Volume3.Material CdTe
+CdTeStrip1Volume3.Shape BRIK 1.0 1.0 5.0
+CdTeStrip1Volume3.Visibility 1
+CdTeStrip1Volume3.Color 1
+CdTeStrip1Volume3.Position 1.0 -5.0 0.0
+CdTeStrip1Volume3.Mother WorldVolume
+
+Volume CdTeStrip1Volume4
+CdTeStrip1Volume4.Material CdTe
+CdTeStrip1Volume4.Shape BRIK 1.0 1.0 5.0
+CdTeStrip1Volume4.Visibility 1
+CdTeStrip1Volume4.Color 1
+CdTeStrip1Volume4.Position 3.0 -5.0 0.0
+CdTeStrip1Volume4.Mother WorldVolume
+
+Volume CdTeStrip2Volume1
+CdTeStrip2Volume1.Material CdTe
+CdTeStrip2Volume1.Shape BRIK 1.0 1.0 5.0
+CdTeStrip2Volume1.Visibility 1
+CdTeStrip2Volume1.Color 1
+CdTeStrip2Volume1.Position -3.0 5.0 0.0
+CdTeStrip2Volume1.Mother WorldVolume
+
+Volume CdTeStrip2Volume2
+CdTeStrip2Volume2.Material CdTe
+CdTeStrip2Volume2.Shape BRIK 1.0 1.0 5.0
+CdTeStrip2Volume2.Visibility 1
+CdTeStrip2Volume2.Color 1
+CdTeStrip2Volume2.Position -1.0 5.0 0.0
+CdTeStrip2Volume2.Mother WorldVolume
+
+Volume CdTeStrip2Volume3
+CdTeStrip2Volume3.Material CdTe
+CdTeStrip2Volume3.Shape BRIK 1.0 1.0 5.0
+CdTeStrip2Volume3.Visibility 1
+CdTeStrip2Volume3.Color 1
+CdTeStrip2Volume3.Position 1.0 5.0 0.0
+CdTeStrip2Volume3.Mother WorldVolume
+
+Volume CdTeStrip2Volume4
+CdTeStrip2Volume4.Material CdTe
+CdTeStrip2Volume4.Shape BRIK 1.0 1.0 5.0
+CdTeStrip2Volume4.Visibility 1
+CdTeStrip2Volume4.Color 1
+CdTeStrip2Volume4.Position 3.0 5.0 0.0
+CdTeStrip2Volume4.Mother WorldVolume
+
+//------------------------------------------------
+// Detector Information:
+
+// Strip 1
+
+Scintillator CdTeDetector1
+CdTeDetector1.DetectorVolume CdTeStrip1Volume1
+CdTeDetector1.SensitiveVolume CdTeStrip1Volume1
+
+CdTeDetector1.NoiseThreshold 1
+CdTeDetector1.TriggerThreshold 20
+#CdTeDetector1.NoiseThresholdEqualsTriggerThreshold true
+
+# Assume CZT resolution: Taken from GRI_Flexible.Detectordescription.geo file
+CdTeDetector1.EnergyResolution ideal
+
+# Assume no event detection losses occur.
+CdTeDetector1.FailureRate 0.0
+
+//-------------------------------------------------
+//Trigger Information:
+
+Trigger TriggerBlock1
+TriggerBlock1.Veto false
+#TriggerBlock1.TriggerByChannel true
+TriggerBlock1.TriggerByDetector true
+TriggerBlock1.Detector CdTeDetector1 1
