@@ -1,0 +1,448 @@
+Name SSGXsimulation
+Version 1.1
+
+SurroundingSphere 80.0  0.0  0.0  -40.0  80.0
+
+Include $(MEGALIB)/resource/examples/geomega/materials/Materials.geo
+
+
+Volume WorldVolume
+WorldVolume.Material Vacuum
+WorldVolume.Visibility 0
+WorldVolume.Shape BRIK 1000.0 1000.0 1000.0
+WorldVolume.Position 0.0 0.0 0.0
+WorldVolume.Mother 0
+
+Volume CdTeStrip1Volume1
+CdTeStrip1Volume1.Material CdTe
+CdTeStrip1Volume1.Shape BRIK 1.0 1.0 5.0
+CdTeStrip1Volume1.Visibility 1
+CdTeStrip1Volume1.Color 1
+CdTeStrip1Volume1.Position -3.0 -5.0 0.0
+CdTeStrip1Volume1.Mother WorldVolume
+
+Volume CdTeStrip1Volume2
+CdTeStrip1Volume2.Material CdTe
+CdTeStrip1Volume2.Shape BRIK 1.0 1.0 5.0
+CdTeStrip1Volume2.Visibility 1
+CdTeStrip1Volume2.Color 1
+CdTeStrip1Volume2.Position -1.0 -5.0 0.0
+CdTeStrip1Volume2.Mother WorldVolume
+
+Volume CdTeStrip1Volume3
+CdTeStrip1Volume3.Material CdTe
+CdTeStrip1Volume3.Shape BRIK 1.0 1.0 5.0
+CdTeStrip1Volume3.Visibility 1
+CdTeStrip1Volume3.Color 1
+CdTeStrip1Volume3.Position 1.0 -5.0 0.0
+CdTeStrip1Volume3.Mother WorldVolume
+
+Volume CdTeStrip1Volume4
+CdTeStrip1Volume4.Material CdTe
+CdTeStrip1Volume4.Shape BRIK 1.0 1.0 5.0
+CdTeStrip1Volume4.Visibility 1
+CdTeStrip1Volume4.Color 1
+CdTeStrip1Volume4.Position 3.0 -5.0 0.0
+CdTeStrip1Volume4.Mother WorldVolume
+
+Volume CdTeStrip2Volume1
+CdTeStrip2Volume1.Material CdTe
+CdTeStrip2Volume1.Shape BRIK 1.0 1.0 5.0
+CdTeStrip2Volume1.Visibility 1
+CdTeStrip2Volume1.Color 1
+CdTeStrip2Volume1.Position -3.0 5.0 0.0
+CdTeStrip2Volume1.Mother WorldVolume
+
+Volume CdTeStrip2Volume2
+CdTeStrip2Volume2.Material CdTe
+CdTeStrip2Volume2.Shape BRIK 1.0 1.0 5.0
+CdTeStrip2Volume2.Visibility 1
+CdTeStrip2Volume2.Color 1
+CdTeStrip2Volume2.Position -1.0 5.0 0.0
+CdTeStrip2Volume2.Mother WorldVolume
+
+Volume CdTeStrip2Volume3
+CdTeStrip2Volume3.Material CdTe
+CdTeStrip2Volume3.Shape BRIK 1.0 1.0 5.0
+CdTeStrip2Volume3.Visibility 1
+CdTeStrip2Volume3.Color 1
+CdTeStrip2Volume3.Position 1.0 5.0 0.0
+CdTeStrip2Volume3.Mother WorldVolume
+
+Volume CdTeStrip2Volume4
+CdTeStrip2Volume4.Material CdTe
+CdTeStrip2Volume4.Shape BRIK 1.0 1.0 5.0
+CdTeStrip2Volume4.Visibility 1
+CdTeStrip2Volume4.Color 1
+CdTeStrip2Volume4.Position 3.0 5.0 0.0
+CdTeStrip2Volume4.Mother WorldVolume
+
+//------------------------------------------------
+// Detector Information:
+
+// Strip 1
+
+Scintillator CdTeDetector1
+CdTeDetector1.DetectorVolume CdTeStrip1Volume1
+CdTeDetector1.SensitiveVolume CdTeStrip1Volume1
+
+CdTeDetector1.NoiseThreshold 1
+CdTeDetector1.TriggerThreshold 20
+#CdTeDetector1.NoiseThresholdEqualsTriggerThreshold true
+
+# Assume CZT resolution: Taken from GRI_Flexible.Detectordescription.geo file
+#CdTeDetector1.EnergyResolution ideal
+CdTeDetector1.EnergyResolution Gauss      14     14     1.15
+CdTeDetector1.EnergyResolution Gauss      60     60     1.26
+CdTeDetector1.EnergyResolution Gauss     122    122     1.47
+CdTeDetector1.EnergyResolution Gauss     662    662     4.125
+CdTeDetector1.EnergyResolution Gauss   10000  10000    16.04
+
+# Assume no event detection losses occur.
+CdTeDetector1.FailureRate 0.0
+
+// Strip 2
+
+Scintillator CdTeDetector2
+CdTeDetector2.DetectorVolume CdTeStrip1Volume2
+CdTeDetector2.SensitiveVolume CdTeStrip1Volume2
+
+CdTeDetector2.NoiseThreshold 1
+CdTeDetector2.TriggerThreshold 20
+#CdTeDetector2.NoiseThresholdEqualsTriggerThreshold true
+
+# Assume CZT resolution: Taken from GRI_Flexible.Detectordescription.geo file
+#CdTeDetector2.EnergyResolution ideal
+CdTeDetector2.EnergyResolution Gauss      14     14     1.15
+CdTeDetector2.EnergyResolution Gauss      60     60     1.26
+CdTeDetector2.EnergyResolution Gauss     122    122     1.47
+CdTeDetector2.EnergyResolution Gauss     662    662     4.125
+CdTeDetector2.EnergyResolution Gauss   10000  10000    16.04
+
+# Assume no event detection losses occur.
+CdTeDetector2.FailureRate 0.0
+
+// Strip 3
+
+Scintillator CdTeDetector3
+CdTeDetector3.DetectorVolume CdTeStrip1Volume3
+CdTeDetector3.SensitiveVolume CdTeStrip1Volume3
+
+CdTeDetector3.NoiseThreshold 1
+CdTeDetector3.TriggerThreshold 20
+#CdTeDetector3.NoiseThresholdEqualsTriggerThreshold true
+
+# Assume CZT resolution: Taken from GRI_Flexible.Detectordescription.geo file
+#CdTeDetector3.EnergyResolution ideal
+CdTeDetector3.EnergyResolution Gauss      14     14     1.15
+CdTeDetector3.EnergyResolution Gauss      60     60     1.26
+CdTeDetector3.EnergyResolution Gauss     122    122     1.47
+CdTeDetector3.EnergyResolution Gauss     662    662     4.125
+CdTeDetector3.EnergyResolution Gauss   10000  10000    16.04
+
+# Assume no event detection losses occur.
+CdTeDetector3.FailureRate 0.0
+
+// Strip 4
+
+Scintillator CdTeDetector4
+CdTeDetector4.DetectorVolume CdTeStrip1Volume4
+CdTeDetector4.SensitiveVolume CdTeStrip1Volume4
+
+CdTeDetector4.NoiseThreshold 1
+CdTeDetector4.TriggerThreshold 20
+#CdTeDetector4.NoiseThresholdEqualsTriggerThreshold true
+
+# Assume CZT resolution: Taken from GRI_Flexible.Detectordescription.geo file
+#CdTeDetector4.EnergyResolution ideal
+CdTeDetector4.EnergyResolution Gauss      14     14     1.15
+CdTeDetector4.EnergyResolution Gauss      60     60     1.26
+CdTeDetector4.EnergyResolution Gauss     122    122     1.47
+CdTeDetector4.EnergyResolution Gauss     662    662     4.125
+CdTeDetector4.EnergyResolution Gauss   10000  10000    16.04
+
+# Assume no event detection losses occur.
+CdTeDetector4.FailureRate 0.0
+
+// Strip 5
+
+Scintillator CdTeDetector5
+CdTeDetector5.DetectorVolume CdTeStrip2Volume1
+CdTeDetector5.SensitiveVolume CdTeStrip2Volume1
+
+CdTeDetector5.NoiseThreshold 1
+CdTeDetector5.TriggerThreshold 20
+#CdTeDetector5.NoiseThresholdEqualsTriggerThreshold true
+
+# Assume CZT resolution: Taken from GRI_Flexible.Detectordescription.geo file
+#CdTeDetector5.EnergyResolution ideal
+CdTeDetector5.EnergyResolution Gauss      14     14     1.15
+CdTeDetector5.EnergyResolution Gauss      60     60     1.26
+CdTeDetector5.EnergyResolution Gauss     122    122     1.47
+CdTeDetector5.EnergyResolution Gauss     662    662     4.125
+CdTeDetector5.EnergyResolution Gauss   10000  10000    16.04
+
+# Assume no event detection losses occur.
+CdTeDetector5.FailureRate 0.0
+
+// Strip 6
+
+Scintillator CdTeDetector6
+CdTeDetector6.DetectorVolume CdTeStrip2Volume2
+CdTeDetector6.SensitiveVolume CdTeStrip2Volume2
+
+CdTeDetector6.NoiseThreshold 1
+CdTeDetector6.TriggerThreshold 20
+#CdTeDetector6.NoiseThresholdEqualsTriggerThreshold true
+
+# Assume CZT resolution: Taken from GRI_Flexible.Detectordescription.geo file
+#CdTeDetector6.EnergyResolution ideal
+CdTeDetector6.EnergyResolution Gauss      14     14     1.15
+CdTeDetector6.EnergyResolution Gauss      60     60     1.26
+CdTeDetector6.EnergyResolution Gauss     122    122     1.47
+CdTeDetector6.EnergyResolution Gauss     662    662     4.125
+CdTeDetector6.EnergyResolution Gauss   10000  10000    16.04
+
+# Assume no event detection losses occur.
+CdTeDetector6.FailureRate 0.0
+
+// Strip 7
+
+Scintillator CdTeDetector7
+CdTeDetector7.DetectorVolume CdTeStrip2Volume3
+CdTeDetector7.SensitiveVolume CdTeStrip2Volume3
+
+CdTeDetector7.NoiseThreshold 1
+CdTeDetector7.TriggerThreshold 20
+#CdTeDetector7.NoiseThresholdEqualsTriggerThreshold true
+
+# Assume CZT resolution: Taken from GRI_Flexible.Detectordescription.geo file
+#CdTeDetector7.EnergyResolution ideal
+CdTeDetector7.EnergyResolution Gauss      14     14     1.15
+CdTeDetector7.EnergyResolution Gauss      60     60     1.26
+CdTeDetector7.EnergyResolution Gauss     122    122     1.47
+CdTeDetector7.EnergyResolution Gauss     662    662     4.125
+CdTeDetector7.EnergyResolution Gauss   10000  10000    16.04
+
+# Assume no event detection losses occur.
+CdTeDetector7.FailureRate 0.0
+
+// Strip 8
+
+Scintillator CdTeDetector8
+CdTeDetector8.DetectorVolume CdTeStrip2Volume4
+CdTeDetector8.SensitiveVolume CdTeStrip2Volume4
+
+CdTeDetector8.NoiseThreshold 1
+CdTeDetector8.TriggerThreshold 20
+#CdTeDetector8.NoiseThresholdEqualsTriggerThreshold true
+
+# Assume CZT resolution: Taken from GRI_Flexible.Detectordescription.geo file
+#CdTeDetector8.EnergyResolution ideal
+CdTeDetector8.EnergyResolution Gauss      14     14     1.15
+CdTeDetector8.EnergyResolution Gauss      60     60     1.26
+CdTeDetector8.EnergyResolution Gauss     122    122     1.47
+CdTeDetector8.EnergyResolution Gauss     662    662     4.125
+CdTeDetector8.EnergyResolution Gauss   10000  10000    16.04
+
+# Assume no event detection losses occur.
+CdTeDetector8.FailureRate 0.0
+
+//-------------------------------------------------
+//Trigger Information:
+
+Trigger TriggerBlock1
+TriggerBlock1.Veto false
+#TriggerBlock1.TriggerByChannel true
+TriggerBlock1.TriggerByDetector true
+TriggerBlock1.Detector CdTeDetector1 1
+TriggerBlock1.Detector CdTeDetector2 1
+
+Trigger TriggerBlock2
+TriggerBlock2.Veto false
+#TriggerBlock2.TriggerByChannel true
+TriggerBlock2.TriggerByDetector true
+TriggerBlock2.Detector CdTeDetector1 1
+TriggerBlock2.Detector CdTeDetector3 1
+
+Trigger TriggerBlock3
+TriggerBlock3.Veto false
+#TriggerBlock3.TriggerByChannel true
+TriggerBlock3.TriggerByDetector true
+TriggerBlock3.Detector CdTeDetector1 1
+TriggerBlock3.Detector CdTeDetector4 1
+
+Trigger TriggerBlock4
+TriggerBlock4.Veto false
+#TriggerBlock4.TriggerByChannel true
+TriggerBlock4.TriggerByDetector true
+TriggerBlock4.Detector CdTeDetector1 1
+TriggerBlock4.Detector CdTeDetector5 1
+
+Trigger TriggerBlock5
+TriggerBlock5.Veto false
+#TriggerBlock5.TriggerByChannel true
+TriggerBlock5.TriggerByDetector true
+TriggerBlock5.Detector CdTeDetector1 1
+TriggerBlock5.Detector CdTeDetector6 1
+
+Trigger TriggerBlock6
+TriggerBlock6.Veto false
+#TriggerBlock6.TriggerByChannel true
+TriggerBlock6.TriggerByDetector true
+TriggerBlock6.Detector CdTeDetector1 1
+TriggerBlock6.Detector CdTeDetector7 1
+
+Trigger TriggerBlock7
+TriggerBlock7.Veto false
+#TriggerBlock7.TriggerByChannel true
+TriggerBlock7.TriggerByDetector true
+TriggerBlock7.Detector CdTeDetector1 1
+TriggerBlock7.Detector CdTeDetector8 1
+
+Trigger TriggerBlock8
+TriggerBlock8.Veto false
+#TriggerBlock8.TriggerByChannel true
+TriggerBlock8.TriggerByDetector true
+TriggerBlock8.Detector CdTeDetector2 1
+TriggerBlock8.Detector CdTeDetector3 1
+
+Trigger TriggerBlock9
+TriggerBlock9.Veto false
+#TriggerBlock9.TriggerByChannel true
+TriggerBlock9.TriggerByDetector true
+TriggerBlock9.Detector CdTeDetector2 1
+TriggerBlock9.Detector CdTeDetector4 1
+
+Trigger TriggerBlock10
+TriggerBlock10.Veto false
+#TriggerBlock10.TriggerByChannel true
+TriggerBlock10.TriggerByDetector true
+TriggerBlock10.Detector CdTeDetector2 1
+TriggerBlock10.Detector CdTeDetector5 1
+
+Trigger TriggerBlock11
+TriggerBlock11.Veto false
+#TriggerBlock11.TriggerByChannel true
+TriggerBlock11.TriggerByDetector true
+TriggerBlock11.Detector CdTeDetector2 1
+TriggerBlock11.Detector CdTeDetector6 1
+
+Trigger TriggerBlock12
+TriggerBlock12.Veto false
+#TriggerBlock12.TriggerByChannel true
+TriggerBlock12.TriggerByDetector true
+TriggerBlock12.Detector CdTeDetector2 1
+TriggerBlock12.Detector CdTeDetector7  1
+
+Trigger TriggerBlock13
+TriggerBlock13.Veto false
+#TriggerBlock13.TriggerByChannel true
+TriggerBlock13.TriggerByDetector true
+TriggerBlock13.Detector CdTeDetector2 1
+TriggerBlock13.Detector CdTeDetector8 1
+
+Trigger TriggerBlock14
+TriggerBlock14.Veto false
+#TriggerBlock14.TriggerByChannel true
+TriggerBlock14.TriggerByDetector true
+TriggerBlock14.Detector CdTeDetector3 1
+TriggerBlock14.Detector CdTeDetector4 1
+
+Trigger TriggerBlock15
+TriggerBlock15.Veto false
+#TriggerBlock15.TriggerByChannel true
+TriggerBlock15.TriggerByDetector true
+TriggerBlock15.Detector CdTeDetector3 1
+TriggerBlock15.Detector CdTeDetector5 1
+
+Trigger TriggerBlock16
+TriggerBlock16.Veto false
+#TriggerBlock16.TriggerByChannel true
+TriggerBlock16.TriggerByDetector true
+TriggerBlock16.Detector CdTeDetector3 1
+TriggerBlock16.Detector CdTeDetector6 1
+
+Trigger TriggerBlock17
+TriggerBlock17.Veto false
+#TriggerBlock17.TriggerByChannel true
+TriggerBlock17.TriggerByDetector true
+TriggerBlock17.Detector CdTeDetector3 1
+TriggerBlock17.Detector CdTeDetector7 1
+
+Trigger TriggerBlock18
+TriggerBlock18.Veto false
+#TriggerBlock18.TriggerByChannel true
+TriggerBlock18.TriggerByDetector true
+TriggerBlock18.Detector CdTeDetector3 1
+TriggerBlock18.Detector CdTeDetector8 1
+
+Trigger TriggerBlock19
+TriggerBlock19.Veto false
+#TriggerBlock19.TriggerByChannel true
+TriggerBlock19.TriggerByDetector true
+TriggerBlock19.Detector CdTeDetector4 1
+TriggerBlock19.Detector CdTeDetector5 1
+
+Trigger TriggerBlock20
+TriggerBlock20.Veto false
+#TriggerBlock20.TriggerByChannel true
+TriggerBlock20.TriggerByDetector true
+TriggerBlock20.Detector CdTeDetector4 1
+TriggerBlock20.Detector CdTeDetector6 1
+
+Trigger TriggerBlock21
+TriggerBlock21.Veto false
+#TriggerBlock21.TriggerByChannel true
+TriggerBlock21.TriggerByDetector true
+TriggerBlock21.Detector CdTeDetector4 1
+TriggerBlock21.Detector CdTeDetector7 1
+
+Trigger TriggerBlock22
+TriggerBlock22.Veto false
+#TriggerBlock22.TriggerByChannel true
+TriggerBlock22.TriggerByDetector true
+TriggerBlock22.Detector CdTeDetector4 1
+TriggerBlock22.Detector CdTeDetector8 1
+
+Trigger TriggerBlock23
+TriggerBlock23.Veto false
+#TriggerBlock23.TriggerByChannel true
+TriggerBlock23.TriggerByDetector true
+TriggerBlock23.Detector CdTeDetector5 1
+TriggerBlock23.Detector CdTeDetector6 1
+
+Trigger TriggerBlock24
+TriggerBlock24.Veto false
+#TriggerBlock24.TriggerByChannel true
+TriggerBlock24.TriggerByDetector true
+TriggerBlock24.Detector CdTeDetector5 1
+TriggerBlock24.Detector CdTeDetector7 1
+
+Trigger TriggerBlock25
+TriggerBlock25.Veto false
+#TriggerBlock25.TriggerByChannel true
+TriggerBlock25.TriggerByDetector true
+TriggerBlock25.Detector CdTeDetector5 1
+TriggerBlock25.Detector CdTeDetector8 1
+
+Trigger TriggerBlock26
+TriggerBlock26.Veto false
+#TriggerBlock26.TriggerByChannel true
+TriggerBlock26.TriggerByDetector true
+TriggerBlock26.Detector CdTeDetector6 1
+TriggerBlock26.Detector CdTeDetector7 1
+
+Trigger TriggerBlock27
+TriggerBlock27.Veto false
+#TriggerBlock27.TriggerByChannel true
+TriggerBlock27.TriggerByDetector true
+TriggerBlock27.Detector CdTeDetector6 1
+TriggerBlock27.Detector CdTeDetector8 1
+
+Trigger TriggerBlock28
+TriggerBlock28.Veto false
+#TriggerBlock28.TriggerByChannel true
+TriggerBlock28.TriggerByDetector true
+TriggerBlock28.Detector CdTeDetector7 1
+TriggerBlock28.Detector CdTeDetector8 1
